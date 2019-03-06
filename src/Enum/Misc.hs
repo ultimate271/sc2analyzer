@@ -3,6 +3,7 @@ module Enum.Misc where
 type Mineral = Double
 type Vespene = Double
 type Time = Int
+type Supply = Int
 
 data Resources = Resources { minerals :: Mineral, vespene :: Vespene }
     deriving (Show, Eq)
