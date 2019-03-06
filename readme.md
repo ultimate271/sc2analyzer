@@ -240,4 +240,36 @@ of the things I need in place, but I am at work, and I know that if I start
 writing this, I won't stop. So I am going to stop there for now, and continue
 on with my life.
 
+# 20190305
+So at this point in time I have decided that I need to change something about
+what I have written so far. In order to go over this, I think it's pretty
+simple to weigh the pros and cons of doing things as I have done them so far.
+
+So the first thing to note is that most of the enums will stay the same.
+
+I have made the decision to use Mineral and Vespene as types which are doubles,
+because I think that sort of thing leads to the most full kind of analysis.
+
+I am still using discrete Time, but I am ensuring that everywhere that Time is
+used, I am using a Type definition for Time, and not something like Int. At
+some point, it may make sense to have Time be a continuous quantity, and talk
+about what happens when you inject certain inputs into a build order at time t
+= 20. For instance, what might happen is, approximattally 3.38 seconds is lost
+on your overall build time if you switch your robo with a twighlight council.
+This tool might be able to show us just exactly how much time is lost by doing
+things in the wrong order. Or if I want to know how much time it will take for
+me to catch up to my otherwise more productive self. Like, if one build order
+gets to 44 probes, 20 stalkers, and 4 immortals in 8 minutes, and another build
+gets to something like a warp prism, two archons, 12 stalkers, 2 observers in
+8:30, with this tool we could say in exactly what ways these builds compare to
+eachother. Once we establish a standad of representing the build order, and we
+have a model by which we can evaluate these build orders to see what sorts of
+sc2 games they produce, we can then play around with changing the datatype of
+Time.
+
+So with that all being said, I do think it will always make sense to have some
+sense of time which is always discrete. So in essence, what we have is our
+current system. If we wanted to get fancy, we could use the rational numbers,
+but lets not go there yet.
+
 
