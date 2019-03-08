@@ -50,7 +50,7 @@ organizeWorkers w g = g {workers = w}
 -- | Given the initial state at t=0, and a time, return the state of the game
 -- after running for the time, executing the commands in the command queue.
 getGameState :: CommandQueue -> GameState -> Time -> GameState
-getGameState cq g t = foldl takeStep g $ cqf <$> [0..t] where
+getGameState cq g t = foldr takeStep g $ cqf <$> [0..t] where
     cqf = CommandQueue.getCommandFunction cq
 
 
@@ -58,13 +58,12 @@ getGameState cq g t = foldl takeStep g $ cqf <$> [0..t] where
 -- to the next. The Command list is the commands that are executed in this
 -- state. This will both execute the commands that it is able, but it will also
 -- do the things neccessary for the regular time expenditure of one second.
-takeStep :: GameState -> [Command] -> GameState
-takeStep g cs
+takeStep :: [Command] -> GameState -> GameState
+takeStep cs
     = (\h -> foldl execCommand h cs)
     . collectResources
     . produceEntities
     . advanceProduction
-    $ g
 
 -- | The number of minerals gathered in one discrete jump
 mineralsGathered :: GameState -> Mineral

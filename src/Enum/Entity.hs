@@ -266,7 +266,7 @@ supplyAcquired :: [Entity] -> Supply
 supplyAcquired es = sum $ [x | e <- es, let x = supplyCost e, x > 0]
 
 totalSupply :: [Entity] -> Supply
-totalSupply es = sum $ map supplyCost es
+totalSupply = sum . (map supplyCost)
 
 
 
