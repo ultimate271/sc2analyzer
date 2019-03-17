@@ -1,5 +1,7 @@
 module Processor
-    (
+    ( Processor
+    , processor
+    , getState
     ) where
 
 import qualified Builtin.Misc as Misc
@@ -19,3 +21,9 @@ import qualified Core.GameState as GameState
 import           Core.GameState (GameState)
 
 data Processor = Processor CommandQueue GameState
+
+processor :: CommandQueue -> GameState -> Processor
+processor = Processor
+
+getState :: Time -> Processor -> GameState
+getState t (Processor cq gs) = GameState.getGameState cq gs t
